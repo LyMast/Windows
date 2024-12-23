@@ -16,7 +16,7 @@ int wmain(int argc, WCHAR* argv[])
 	// - 실패 - 
 	//		- 해당 경로에 이미 같은 이름의 디렉토리가 있으면 실패한다.
 	////////////////////////////////////////////////////////////////////
-	BOOL bCreate = CreateDirectory(L"TestDirectory", NULL);
+	BOOL bCreate = CreateDirectory(L"TestDirectory/", NULL);
 	if (bCreate)
 		wprintf(L"Created!\n\n");
 	else
@@ -38,7 +38,7 @@ int wmain(int argc, WCHAR* argv[])
 	// 
 	//		결과 : TestDirectory 하위 폴더로서 만들어진다.
 	////////////////////////////////////////////////////////////////////
-	bCreate = CreateDirectory(L"TestDirectory/InnerDirectory", NULL);
+	bCreate = CreateDirectory(L"TestDirectory/InnerDirectory/", NULL);
 	if (bCreate)
 		wprintf(L"Created!\n\n");
 	else
@@ -66,7 +66,7 @@ int wmain(int argc, WCHAR* argv[])
 	//  두 번째 파라미터 : 만들 디렉터리의 경로입니다.
 	//  세 번째 파라미터 : 해당 디렉토리에 대한 보안 설명자.
 	////////////////////////////////////////////////////////////////////
-	BOOL bCreateEx = CreateDirectoryEx(L"./", L"Test2", NULL);		// 성공
+	BOOL bCreateEx = CreateDirectoryEx(L"./", L"Test2/", NULL);		// 성공
 	if (bCreateEx)
 		wprintf(L"Created!\n\n");
 	else
@@ -88,7 +88,7 @@ int wmain(int argc, WCHAR* argv[])
 
 
 
-	bCreateEx = CreateDirectoryEx(L"./Test2/", L"Test2Ex", NULL);		// 성공	- 오류 : Test2 하위에 생긴것이 아니라 ./ 폴더안에 생성이 되었다.
+	bCreateEx = CreateDirectoryEx(L"./Test2/", L"Test2Ex/", NULL);		// 성공	- 오류 : Test2 하위에 생긴것이 아니라 ./ 폴더안에 생성이 되었다.
 	if (bCreateEx)
 		wprintf(L"Created!\n\n");
 	else
